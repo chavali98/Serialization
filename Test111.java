@@ -1,0 +1,85 @@
+import java.io.*; 
+class Demo extends abc //implements Serializable 
+{  
+ public int a; 
+ public String b; 
+ def D; 
+ 
+ public Demo(String place, int zipcode, int a, String b,int id,String name) 
+ { 
+    super(place,zipcode);
+     D = new def( id, name);
+     this.a = a; 
+     this.b = b; 
+ } 
+} 
+
+class Test111 
+{ 
+ public static void main(String[] args) 
+ {    
+     Demo object = new Demo("vizag",530032,1, "abc",12,"abc"); 
+     String filename = "file.ser"; 
+       
+      
+     try
+     {    
+         
+         FileOutputStream file = new FileOutputStream(filename); 
+         ObjectOutputStream out = new ObjectOutputStream(file); 
+           
+         
+         out.writeObject(object); 
+           
+         out.close(); 
+         file.close(); 
+           
+         System.out.println("Object has been serialized"); 
+
+     } 
+       
+     catch(IOException ex) 
+     { 
+         System.out.println("IOException is caught"+ex); 
+     } 
+
+
+     Demo object1 = null; 
+     def object2 = null;
+
+     
+     try
+     {    
+         
+         FileInputStream file = new FileInputStream(filename); 
+         ObjectInputStream in = new ObjectInputStream(file); 
+           
+         
+         object1 = (Demo)in.readObject(); 
+	//object2 = (def)in.readObject();
+
+           
+         in.close(); 
+         file.close(); 
+           
+         System.out.println("Object has been deserialized "); 
+         System.out.println("a = " + object1.a); 
+         System.out.println("b = " + object1.b); 
+	System.out.println("b = " + object1.place); 
+	System.out.println("b = " + object1.zipcode); 
+	System.out.println("b = " + object1.D.name); 
+	System.out.println("b = " + object1.D.id); 
+     } 
+       
+     catch(IOException ex) 
+     { 
+         System.out.println("IOException is caught"+ex); 
+     } 
+       
+     catch(ClassNotFoundException ex) 
+     { 
+         System.out.println("ClassNotFoundException is caught"); 
+     } 
+
+ } 
+}
