@@ -1,3 +1,4 @@
+/*Aprogram to demonstrate serialization for various different dependencies*/
 import java.io.*; 
 class Demo extends abc //implements Serializable 
 {  
